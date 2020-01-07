@@ -1,6 +1,8 @@
 ﻿using Gaincapital_v2.Helper.Exchangeratesapi;
 using Gaincapital_v2.Helper.Exchangeratesapi.Dto;
 using Newtonsoft.Json;
+using NUnit.Framework;
+using RestSharp;
 using System;
 using TechTalk.SpecFlow;
 
@@ -9,40 +11,53 @@ namespace Gaincapital_v2.StepDefinitions
     [Binding]
     public class ExchangeratesapiSteps
     {
-        private LastesDto lastes = null;
+        private IRestResponse<LastesDto>  Response = null;
         private readonly ExchangeratesapiClient Rest = new ExchangeratesapiClient();
-        [Given(@"I have an example endpoint (.*)")]
-        public void GivenIHaveAnExampleEndpoint(string restEndpoint)
+        [Given(@"I have an endpoint (.*)")]
+        public void GivenIHaveAnEndpoint(string restEndpoint)
         {
             Rest.SetEndpoint(restEndpoint);
         }
 
-        [When(@"I search for all customers")]
-        public void WhenISearchForAllCustomers()
+        [When(@"I try get all data")]
+        public void WhenITryGetAllData()
         {
-            Console.WriteLine("Hi Hi World");
-            lastes = Rest.GetLastesExchangeReferenceRates();
-            string output1 = JsonConvert.SerializeObject(lastes);
-            string output2 = JsonConvert.SerializeObject(lastes.Base);
-            string output3 = JsonConvert.SerializeObject(lastes.Date);
-            string output4 = JsonConvert.SerializeObject(lastes.Rates.CAD);
-            Console.WriteLine(output1);
-            Console.WriteLine("");
-            Console.WriteLine(output2);
-            Console.WriteLine("");
-            Console.WriteLine(output3);
-            Console.WriteLine("");     
-            Console.WriteLine(output4);
-            Console.WriteLine("");
-
+            Response = Rest.GetLastesExchangeReferenceRates();
         }
 
-        [Then(@"the result contains customer Laura")]
-        public void ThenTheResultContainsCustomerLaura()
+        [Then(@"I don't have null object")]
+        public void ThenIDonTHaveNullObject()
         {
-            string output = JsonConvert.SerializeObject(lastes);
-            //Console.WriteLine(output);
-    
+            Assert.IsNotNull(Rest.GetDataFromResponse(Response));
         }
+
+        [Then(@"I don't have error status code")]
+        public void ThenIDonTHaveErrorStatusCode()
+        {
+            Assert.IsTrue(Rest.GetStatusCodeFromResponse(Response)<400);
+        }
+
+
+        [Then(@"I don't have error status (.*)")]
+        public void ThenIDonTHaveErrorStatus(string code)
+        {
+            Assert.IsFalse(Rest.GetStatusCodeFromResponse(Response).Equals(Convert.ToInt32(code)));
+        }
+
+        [Then(@"I have (.*) status code")]
+        public void ThenIHaveStatusCode(int code)
+        {
+            Assert.IsTrue(Rest.GetStatusCodeFromResponse(Response).Equals(code));
+        }
+
+        [Then(@"Value from (.*) is bigger than zero")]
+        public void ThenValueFromIsBiggerThanZero(string currency)
+        {
+          var result =  Rest.getValueOfCurrency(Response, currency);
+            Console.WriteLine(result);
+            Assert.IsTrue(result > 0);
+        }
+
+
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\piotr\\source\\repos\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj": {}
+    "C:\\Users\\piotr\\source\\repos\\Git\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\piotr\\source\\repos\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj": {
+    "C:\\Users\\piotr\\source\\repos\\Git\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj",
+        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Git\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj",
         "projectName": "Gaincapital_v2",
-        "projectPath": "C:\\Users\\piotr\\source\\repos\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj",
+        "projectPath": "C:\\Users\\piotr\\source\\repos\\Git\\Gaincapital_v2\\Gaincapital_v2\\Gaincapital_v2.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\piotr\\source\\repos\\Gaincapital_v2\\Gaincapital_v2\\obj\\",
+        "outputPath": "C:\\Users\\piotr\\source\\repos\\Git\\Gaincapital_v2\\Gaincapital_v2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\piotr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,6 +51,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.16.0, )"
+            },
+            "Nancy": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "RestSharp": {
               "target": "Package",

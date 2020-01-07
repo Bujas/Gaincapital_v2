@@ -1,5 +1,4 @@
-﻿using Gaincapital_v2.Helper.Structures;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
