@@ -7,7 +7,7 @@ using System.Net;
 
 namespace Gaincapital_v2.Helper.Exchangeratesapi
 {
-    class ExchangeratesapiControler
+    class ExchangeratesapiHelper
     {
         public HttpStatusCode GetStatusCodeFromResponse(IRestResponse<LastesDto> response)
         {
