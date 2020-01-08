@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Gaincapital_v2.Helper.Exchangeratesapi.Dto
+﻿namespace Gaincapital_v2.Helper.Exchangeratesapi.Dto
 {
     public class Rates
     {

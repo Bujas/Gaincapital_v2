@@ -1,10 +1,9 @@
 ﻿Feature: Exchangeratesapi
  This test was created for Gaincapital recruitment process
 
-@Check
 Scenario: I don't have response status codes error
 	Given I have an endpoint https://api.exchangeratesapi.io
-	When I try get all data
+	When I try get data
 	Then I don't have error status <code>
 
 	Examples:
@@ -28,17 +27,17 @@ Scenario: I don't have response status codes error
 
 Scenario: I have 200 response status code
 	Given I have an endpoint https://api.exchangeratesapi.io
-	When I try get all data
+	When I try get data
 	Then I have 200 status code
 
-Scenario: I don't have null
+Scenario: I don't have empty response
 	Given I have an endpoint https://api.exchangeratesapi.io
-	When I try get all data
-	Then I don't have null object
+	When I try get data
+	Then I don't have empty response
 
 Scenario: Value from currency is bigger than zero
 	Given I have an endpoint https://api.exchangeratesapi.io
-	When I try get all data
+	When I try get data
 	Then Value from <currency> is bigger than zero
 
 	Examples:
@@ -75,3 +74,8 @@ Scenario: Value from currency is bigger than zero
 		| GBP      |
 		| KRW      |
 		| MYR      |
+
+Scenario:  My base currency is an euro
+	Given I have an endpoint https://api.exchangeratesapi.io
+	When I try get data
+	Then My base currency is an EUR
